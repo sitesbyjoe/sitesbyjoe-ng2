@@ -1,0 +1,61 @@
+body {
+  background-color: #d7b181;
+  color: #333333;
+  font-size: 120%;
+  font-family: Georgia, serif;
+  line-height: 1.5;
+  background-image: url('http://sitesbyjoe.com/assets/images/body-bg.jpg');
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Lato, sans-serif;
+}
+a {
+  color: #923f3f;
+}
+a:hover,
+a:active {
+  color: #923f3f;
+}
+img {
+  max-width: 100%;
+}
+.clear {
+  clear: both;
+}
+header {
+  background-color: #923f3f;
+  font-family: Lato, sans-serif;
+  position: relative;
+}
+header a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.logo {
+  font-size: 1.0em;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: lighter;
+}
+.logo:hover,
+.logo:active {
+  color: #ffffff;
+}
+nav {
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+}
+nav .main-nav {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
