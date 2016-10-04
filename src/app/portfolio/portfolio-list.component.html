@@ -1,8 +1,10 @@
-<h1>Portfolio</h1>
+<h1>Portfolio List</h1>
 <ul>
-  <li><a routerLink="/portfolio/detail/1" routerLinkActive="active">Project 1</a></li>
-  <li><a routerLink="/portfolio/detail/2" routerLinkActive="active">Project 2</a></li>
-  <li><a routerLink="/portfolio/detail/3" routerLinkActive="active">Project 3</a></li>
-  <li><a routerLink="/portfolio/detail/4" routerLinkActive="active">Project 5</a></li>
-  <li><a routerLink="/portfolio/detail/5" routerLinkActive="active">Project 5</a></li>
+  <li *ngFor="let item of portfolio">
+    <a [routerLink]="['/portfolio/detail', item.id]">
+      <img src="http://sitesbyjoe.com/{{item.image_path}}">
+      <h3>{{item.name}}</h3>
+      <p>{{item.description}}</p>
+    </a>
+  </li>
 </ul>

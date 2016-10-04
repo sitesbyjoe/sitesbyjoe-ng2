@@ -1,3 +1,18 @@
-<h1>Portfolio Detail</h1>
-<p>portfolio detail works!</p>
-<p><a routerLink="/portfolio" routerLinkActive="active">Back to List</a></p>
+<div *ngFor="let item of portfolio">
+  <h1>{{item.name}}</h1>
+  <p>{{item.description}}</p>
+  <p>Launched on {{item.launch_date}}</p>
+  <img src="{{item.image_path}}">
+
+  <h3>Goals</h3>
+  <p>{{item.goals}}</p>
+
+  <h3>Solution</h3>
+  <p>{{item.solution}}</p>
+
+  <h3>Technologies Used</h3>
+  <p>{{item.technologies}}</p>
+
+  <p><a href="{{item.url}}" target="_blank">View website</a></p>
+</div>
+<p><a routerLink="/portfolio">Back to List</a></p>

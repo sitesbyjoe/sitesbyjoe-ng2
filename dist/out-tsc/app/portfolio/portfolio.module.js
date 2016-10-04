@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing, appRoutingProviders } from './portfolio.routing';
 import { PortfolioService } from './portfolio.service';
-import { PortfolioComponent } from './portfolio.component';
 import { PortfolioListComponent } from './portfolio-list.component';
 import { PortfolioDetailComponent } from './portfolio-detail.component';
 export var PortfolioModule = (function () {
@@ -22,7 +21,6 @@ export var PortfolioModule = (function () {
     PortfolioModule = __decorate([
         NgModule({
             declarations: [
-                PortfolioComponent,
                 PortfolioListComponent,
                 PortfolioDetailComponent
             ],
@@ -36,7 +34,7 @@ export var PortfolioModule = (function () {
                 appRoutingProviders,
                 PortfolioService
             ],
-            bootstrap: [PortfolioComponent]
+            bootstrap: [PortfolioListComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], PortfolioModule);

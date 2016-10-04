@@ -10,11 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { PortfolioService } from './portfolio.service';
 export var PortfolioListComponent = (function () {
-    function PortfolioListComponent() {
-        console.log('portfolio list construct');
+    function PortfolioListComponent(portfolioService) {
+        this.portfolioService = portfolioService;
     }
     PortfolioListComponent.prototype.ngOnInit = function () {
-        console.log('portfolio list init');
+        this.getPortfolio();
+    };
+    PortfolioListComponent.prototype.getPortfolio = function () {
+        this.portfolio = this.portfolioService.getPortfolio(null);
     };
     PortfolioListComponent = __decorate([
         Component({
@@ -22,7 +25,7 @@ export var PortfolioListComponent = (function () {
             templateUrl: './portfolio-list.component.html',
             providers: [PortfolioService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [PortfolioService])
     ], PortfolioListComponent);
     return PortfolioListComponent;
 }());

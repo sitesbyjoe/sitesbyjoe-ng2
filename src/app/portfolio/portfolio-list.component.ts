@@ -8,12 +8,18 @@ import { PortfolioService } from './portfolio.service';
 })
 export class PortfolioListComponent implements OnInit {
 
-  constructor() {
-    console.log('portfolio list construct');
-  }
+  portfolio: any;
+
+  constructor(
+    private portfolioService: PortfolioService
+  ) {}
 
   ngOnInit() {
-    console.log('portfolio list init');
+    this.getPortfolio();
+  }
+
+  getPortfolio() {
+    this.portfolio = this.portfolioService.getPortfolio(null);
   }
 
 }

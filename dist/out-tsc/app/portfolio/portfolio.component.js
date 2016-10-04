@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { PortfolioService } from './portfolio.service';
 export var PortfolioComponent = (function () {
-    function PortfolioComponent() {
+    function PortfolioComponent(portfolioService) {
+        this.portfolioService = portfolioService;
         console.log('portfolio construct');
+        console.log('pservice?', portfolioService);
     }
     PortfolioComponent.prototype.ngOnInit = function () {
         console.log('portfolio init');
@@ -22,7 +24,7 @@ export var PortfolioComponent = (function () {
             template: "<router-outlet></router-outlet>",
             providers: [PortfolioService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [PortfolioService])
     ], PortfolioComponent);
     return PortfolioComponent;
 }());

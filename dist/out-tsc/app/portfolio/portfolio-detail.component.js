@@ -8,13 +8,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PortfolioService } from './portfolio.service';
 export var PortfolioDetailComponent = (function () {
-    function PortfolioDetailComponent() {
+    function PortfolioDetailComponent(route, router, portfolioService) {
+        this.route = route;
+        this.router = router;
+        this.portfolioService = portfolioService;
         console.log('portfolio detail construct');
     }
     PortfolioDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
         console.log('portfolio detail init');
+        console.log(this);
+        console.log(this.route.params);
+        this.route.params.forEach(function (params) {
+            var id = params['id'];
+            console.log(id);
+            _this.portfolio = _this.portfolioService.getPortfolio(id);
+        });
     };
     PortfolioDetailComponent = __decorate([
         Component({
@@ -22,7 +34,7 @@ export var PortfolioDetailComponent = (function () {
             templateUrl: './portfolio-detail.component.html',
             providers: [PortfolioService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [ActivatedRoute, Router, PortfolioService])
     ], PortfolioDetailComponent);
     return PortfolioDetailComponent;
 }());
