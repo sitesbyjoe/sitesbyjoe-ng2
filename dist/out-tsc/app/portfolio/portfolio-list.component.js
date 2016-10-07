@@ -17,7 +17,14 @@ export var PortfolioListComponent = (function () {
         this.getPortfolio();
     };
     PortfolioListComponent.prototype.getPortfolio = function () {
-        this.portfolio = this.portfolioService.getPortfolio(null);
+        var _this = this;
+        try {
+            this.portfolioService.makeRequest()
+                .subscribe(function (portfolio) { return _this.portfolio = portfolio; }, function (error) { return _this.errorMessage = error; });
+        }
+        catch (err) {
+            console.log(err);
+        }
     };
     PortfolioListComponent = __decorate([
         Component({

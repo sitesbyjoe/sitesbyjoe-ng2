@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 export class Portfolio {
   id: number;
@@ -32,8 +35,8 @@ export class PortfolioService {
   }
 
   getPortfolio(id) {
-    var portfolio = [];
-    var portfolioItems = [
+    let portfolio = [];
+    let portfolioItems = [
       {"id":"80","name":"College Connection","url":"http:\/\/www.collegescholarships.com","description":"A new website for a college scholarship search service.","goals":"The original collegescholarships.com was created in 1995 and needed to be rebuilt into a web application that allowed for storing and search college scholarships.","solution":"The project was built in 2 phases. The first phase was taking the cumbersome static file system and turning it into a dynamic online system.\n\nThe 2nd Phase involved building a public interface that allowed students to create profiles on the site that would automatically display matching scholarships based on their interests and needs.\n\nIn the first 48 hours the site had dramatically increased it's traffic and had picked up hundreds of new profiles without any marketing whatsoever.","technologies":"PHP, MySQL, Codeigniter, Javascript, HTML, CSS, jQuery","comment":"","launch_date":"2011-08-01","rank":"1","image":null,"tmb":null,"slug":"college-connection","tags":"blue, college scholarships, college connection, codeigniter","category":null,"views":"0","published":"0","image_path":"uploads\/portfolio\/80-college-scholarships-tmb.jpg"},
       {"id":"79","name":"C-Cups Cupcakes","url":"http:\/\/ccupscupcakes.com","description":"New website for a Raynham, MA Mobile Bakery","goals":"","solution":"","technologies":"HTML5\/CSS3, jQuery, PHP\/MySQL, Codeigniter","comment":"After having a horrible experience with a past website designer coming to Sites by Joe was like a dream come true. The finished website is one of the most professional, smooth running websites I have ever come across. I am so thankful and proud that Joe was able to capture everything I asked for in my site. It is impeccably designed, crisp, clean and as professional as it comes not to mention it was built in such a timely manner! I could not have asked for a better website designer and would truly recommend him to anyone. It is not often that someone can fully trust another with such an important part of their business and be so satisfied with the final product! Thank you so much for all your hard work and getting my website completed so quickly!","launch_date":"2011-05-01","rank":"2","image":null,"tmb":null,"slug":"ccups-cupcakes","tags":"","category":null,"views":"0","published":"0","image_path":"uploads\/portfolio\/79-c-cups-tmb.jpg"},
       {"id":"39","name":"Goldcoast Realty","url":"http:\/\/www.goldcoastsir.com","description":"Sotheby's International Realty, Inc. office in Ocean City, New Jersey.","goals":"","solution":"","technologies":"","comment":"","launch_date":"2011-06-28","rank":"3","image":null,"tmb":null,"slug":"goldcoast-realty-ocean-city","tags":"","category":null,"views":"0","published":"1","image_path":"uploads\/portfolio\/39-goldcoast-tmb.jpg"},
@@ -61,12 +64,31 @@ export class PortfolioService {
     return portfolio;
   }
 
-  makeRequest(): void {
+  makeRequest() {
     this.loading = true;
-    this.http.request('http://jsonplaceholder.typicode.com/posts/1').subscribe(function(res: Response) {
-      this.data = res.json();
+    return this.http.get('http://sitesbyjoe.com/portfolio/api')
+      .map(this.extractData);
+      // .catch(this.handleError);
+    /*
+    .subscribe(function(res: Response) {
+      let portfolio = res.json();
+      console.log(portfolio);
       this.loading = false;
-    });
+      return portfolio;*/
+  }
+
+  extractData(res) {
+    let body = res.json();
+    console.log(body);
+    return body || {};
+  }
+
+  handleError(error) {
+    console.log(error);
+    let errMsg = (error.message) ? error.message : error
+      error.status ? `${error.status} - ${error.statusText}` : 'Server Error';
+    console.log(errMsg);
+    return Observable.throw(errMsg);
   }
 
 }

@@ -9,6 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 export var Portfolio = (function () {
     function Portfolio() {
     }
@@ -49,10 +52,20 @@ export var PortfolioService = (function () {
     };
     PortfolioService.prototype.makeRequest = function () {
         this.loading = true;
-        this.http.request('http://jsonplaceholder.typicode.com/posts/1').subscribe(function (res) {
-            this.data = res.json();
-            this.loading = false;
-        });
+        return this.http.get('http://sitesbyjoe.com/portfolio/api')
+            .map(this.extractData);
+    };
+    PortfolioService.prototype.extractData = function (res) {
+        var body = res.json();
+        console.log(body);
+        return body || {};
+    };
+    PortfolioService.prototype.handleError = function (error) {
+        console.log(error);
+        var errMsg = (error.message) ? error.message : error;
+        error.status ? error.status + " - " + error.statusText : 'Server Error';
+        console.log(errMsg);
+        return Observable.throw(errMsg);
     };
     PortfolioService = __decorate([
         Injectable(), 

@@ -9,6 +9,7 @@ import { PortfolioService } from './portfolio.service';
 export class PortfolioListComponent implements OnInit {
 
   portfolio: any;
+  errorMessage: any;
 
   constructor(
     private portfolioService: PortfolioService
@@ -19,7 +20,18 @@ export class PortfolioListComponent implements OnInit {
   }
 
   getPortfolio() {
-    this.portfolio = this.portfolioService.getPortfolio(null);
+    //this.portfolio = this.portfolioService.getPortfolio(null);
+    //console.log(this.portfolio);
+    try {
+      this.portfolioService.makeRequest()
+      .subscribe(
+        portfolio => this.portfolio = portfolio,
+        error => this.errorMessage = error
+      );
+    } catch (err) {
+      console.log(err);
+    }
+    //console.log(this.portfolio);
   }
 
 }
