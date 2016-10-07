@@ -1,4 +1,4 @@
-class Portfolio {
+export class Portfolio {
   id: number;
   name: string;
   url: string;

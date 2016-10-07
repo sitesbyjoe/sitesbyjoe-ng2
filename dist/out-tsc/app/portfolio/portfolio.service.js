@@ -47,6 +47,13 @@ export var PortfolioService = (function () {
         }
         return portfolio;
     };
+    PortfolioService.prototype.makeRequest = function () {
+        this.loading = true;
+        this.http.request('http://jsonplaceholder.typicode.com/posts/1').subscribe(function (res) {
+            this.data = res.json();
+            this.loading = false;
+        });
+    };
     PortfolioService = __decorate([
         Injectable(), 
         __metadata('design:paramtypes', [Http])

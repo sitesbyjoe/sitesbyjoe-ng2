@@ -24,7 +24,10 @@ export class Portfolio {
 @Injectable()
 export class PortfolioService {
 
-  constructor(private http: Http) {
+  loading: boolean;
+  data: Object;
+
+  constructor(public http: Http) {
     console.log('constructing portfolio.service');
   }
 
@@ -56,6 +59,14 @@ export class PortfolioService {
     }
 
     return portfolio;
+  }
+
+  makeRequest(): void {
+    this.loading = true;
+    this.http.request('http://jsonplaceholder.typicode.com/posts/1').subscribe(function(res: Response) {
+      this.data = res.json();
+      this.loading = false;
+    });
   }
 
 }

@@ -1,4 +1,4 @@
-var Portfolio = (function () {
+export var Portfolio = (function () {
     function Portfolio() {
     }
     return Portfolio;
