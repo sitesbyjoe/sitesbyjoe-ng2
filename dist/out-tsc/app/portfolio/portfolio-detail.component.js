@@ -15,18 +15,26 @@ export var PortfolioDetailComponent = (function () {
         this.route = route;
         this.router = router;
         this.portfolioService = portfolioService;
-        console.log('portfolio detail construct');
     }
     PortfolioDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log('portfolio detail init');
-        console.log(this);
-        console.log(this.route.params);
         this.route.params.forEach(function (params) {
             var id = params['id'];
-            console.log(id);
-            _this.portfolio = _this.portfolioService.getPortfolio(id);
+            _this.portfolio = _this.getPortfolioDetail(id);
         });
+    };
+    PortfolioDetailComponent.prototype.getPortfolioDetail = function (id) {
+        var _this = this;
+        console.log(id);
+        try {
+            this.portfolioService.getPortfolioDetail(id)
+                .subscribe(function (portfolio) { return _this.portfolio = portfolio; }, function (error) { return _this.errorMessage = error; });
+            console.log(this.portfolio);
+            console.log(this.portfolio.photos);
+        }
+        catch (err) {
+            console.log(err);
+        }
     };
     PortfolioDetailComponent = __decorate([
         Component({

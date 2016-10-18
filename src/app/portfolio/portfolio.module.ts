@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 
 import { routing, appRoutingProviders }  from './portfolio.routing';
 
+import { Portfolio } from './portfolio';
 import { PortfolioService } from './portfolio.service';
 import { PortfolioListComponent } from './portfolio-list.component';
 import { PortfolioDetailComponent } from './portfolio-detail.component';
@@ -26,6 +27,7 @@ import { PortfolioDetailComponent } from './portfolio-detail.component';
     routing
   ],
   providers: [
+    Portfolio,
     appRoutingProviders,
     PortfolioService
   ],

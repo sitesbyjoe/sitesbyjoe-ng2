@@ -8,18 +8,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
+import { Portfolio } from './portfolio';
 import { PortfolioService } from './portfolio.service';
 export var PortfolioListComponent = (function () {
     function PortfolioListComponent(portfolioService) {
         this.portfolioService = portfolioService;
     }
     PortfolioListComponent.prototype.ngOnInit = function () {
-        this.getPortfolio();
+        this.getPortfolioList();
     };
-    PortfolioListComponent.prototype.getPortfolio = function () {
+    PortfolioListComponent.prototype.getPortfolioList = function () {
         var _this = this;
         try {
-            this.portfolioService.makeRequest()
+            this.portfolioService.getPortfolioList()
                 .subscribe(function (portfolio) { return _this.portfolio = portfolio; }, function (error) { return _this.errorMessage = error; });
         }
         catch (err) {
@@ -30,7 +31,10 @@ export var PortfolioListComponent = (function () {
         Component({
             selector: 'app-portfolio-list',
             templateUrl: './portfolio-list.component.html',
-            providers: [PortfolioService]
+            providers: [
+                Portfolio,
+                PortfolioService
+            ]
         }), 
         __metadata('design:paramtypes', [PortfolioService])
     ], PortfolioListComponent);

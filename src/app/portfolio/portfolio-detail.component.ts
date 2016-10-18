@@ -10,25 +10,34 @@ import { PortfolioService } from './portfolio.service';
 export class PortfolioDetailComponent implements OnInit {
 
   portfolio: any;
+  errorMessage: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private portfolioService: PortfolioService) {
-    console.log('portfolio detail construct');
   }
 
   ngOnInit() {
-    console.log('portfolio detail init');
-    console.log(this);
-    console.log(this.route.params);
     this.route.params.forEach((params: Params) => {
       let id = params['id'];
-      console.log(id);
-      this.portfolio = this.portfolioService.getPortfolio(id);
+      this.portfolio = this.getPortfolioDetail(id);
     });
   }
 
-
+  getPortfolioDetail(id) {
+    console.log(id);
+    try {
+      this.portfolioService.getPortfolioDetail(id)
+      .subscribe(
+        portfolio => this.portfolio = portfolio,
+        error => this.errorMessage = error
+      );
+      console.log(this.portfolio);
+      console.log(this.portfolio.photos);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
 }

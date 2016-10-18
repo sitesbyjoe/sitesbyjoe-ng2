@@ -3,8 +3,9 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Portfolio } from './portfolio';
 
-export class Portfolio {
+/*export class Portfolio {
   id: number;
   name: string;
   url: string;
@@ -22,7 +23,7 @@ export class Portfolio {
   category: string;
   views: number;
   published: number;
-}
+}*/
 
 @Injectable()
 export class PortfolioService {
@@ -30,10 +31,11 @@ export class PortfolioService {
   loading: boolean;
   data: Object;
 
-  constructor(public http: Http) {
+  constructor(public http: Http, portfolio: Portfolio) {
     console.log('constructing portfolio.service');
   }
 
+  /*
   getPortfolio(id) {
     let portfolio = [];
     let portfolioItems = [
@@ -63,32 +65,29 @@ export class PortfolioService {
 
     return portfolio;
   }
+  */
 
-  makeRequest() {
-    this.loading = true;
-    return this.http.get('http://sitesbyjoe.com/portfolio/api')
+  getPortfolioList() {
+    return this.http.get('http://sitesbyjoe.com/api/portfolio_list')
       .map(this.extractData);
-      // .catch(this.handleError);
-    /*
-    .subscribe(function(res: Response) {
-      let portfolio = res.json();
-      console.log(portfolio);
-      this.loading = false;
-      return portfolio;*/
+  }
+
+  getPortfolioDetail(id) {
+    return this.http.get('http://sitesbyjoe.com/api/portfolio_detail/' + id)
+      .map(this.extractData);
   }
 
   extractData(res) {
+    console.log(res);
     let body = res.json();
-    console.log(body);
     return body || {};
   }
 
   handleError(error) {
     console.log(error);
-    let errMsg = (error.message) ? error.message : error
+    /*let errMsg = (error.message) ? error.message : error
       error.status ? `${error.status} - ${error.statusText}` : 'Server Error';
-    console.log(errMsg);
-    return Observable.throw(errMsg);
+    return Observable.throw(errMsg);*/
   }
 
 }

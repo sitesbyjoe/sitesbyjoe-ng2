@@ -2,7 +2,8 @@
   <h1>{{item.name}}</h1>
   <p>{{item.description}}</p>
   <p>Launched on {{item.launch_date}}</p>
-  <img src="{{item.image_path}}">
+
+  <img *ngFor="let photo of item.photos" alt="{{photo.caption}}" src="http://sitesbyjoe.com/{{photo.image_path}}">
 
   <h3>Goals</h3>
   <p>{{item.goals}}</p>

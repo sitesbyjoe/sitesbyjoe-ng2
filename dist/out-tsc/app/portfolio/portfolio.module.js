@@ -12,6 +12,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing, appRoutingProviders } from './portfolio.routing';
+import { Portfolio } from './portfolio';
 import { PortfolioService } from './portfolio.service';
 import { PortfolioListComponent } from './portfolio-list.component';
 import { PortfolioDetailComponent } from './portfolio-detail.component';
@@ -31,6 +32,7 @@ export var PortfolioModule = (function () {
                 routing
             ],
             providers: [
+                Portfolio,
                 appRoutingProviders,
                 PortfolioService
             ],

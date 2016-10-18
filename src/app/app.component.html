@@ -1,11 +1,30 @@
 <header>
-  <a class="logo" href="/">Sites by Joe</a>
-  <nav>
-    <a routerLink="/" routerLinkActive="active">Home</a>
-    <a routerLink="/portfolio" routerLinkActive="active">Portfolio</a>
-    <a routerLink="/about" routerLinkActive="active">About</a>
-    <a routerLink="/contact" routerLinkActive="active">Contact</a>
-  </nav>
+
+
+  <!-- Burger-Icon -->
+  <div class="b-container">
+
+    <!-- Burger-Brand -->
+    <a href="#" class="b-brand">Sites by Joe</a>
+
+    <div class="b-menu" (click)="toggleNav()">
+      <div class="b-bun b-bun--top"></div>
+      <div class="b-bun b-bun--mid"></div>
+      <div class="b-bun b-bun--bottom"></div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="b-nav">
+      <li><a class="b-link" routerLink="/" (click)="toggleNav()">Home</a></li>
+      <li><a class="b-link" routerLink="/portfolio" (click)="toggleNav()">Portfolio</a></li>
+      <li><a class="b-link" routerLink="/about" (click)="toggleNav()">About</a></li>
+      <li><a class="b-link" routerLink="/contact" (click)="toggleNav()">Contact</a></li>
+    </div>
+
+  </div>
+
 </header>
+
+
 
 <router-outlet></router-outlet>

@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { Portfolio } from './portfolio';
 import { PortfolioService } from './portfolio.service';
 
 @Component({
   selector: 'app-portfolio-list',
   templateUrl: './portfolio-list.component.html',
-  providers: [PortfolioService]
+  providers: [
+    Portfolio,
+    PortfolioService
+  ]
 })
 export class PortfolioListComponent implements OnInit {
 
-  portfolio: any;
+  portfolio: Portfolio[];
   errorMessage: any;
 
   constructor(
@@ -16,14 +20,12 @@ export class PortfolioListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getPortfolio();
+    this.getPortfolioList();
   }
 
-  getPortfolio() {
-    //this.portfolio = this.portfolioService.getPortfolio(null);
-    //console.log(this.portfolio);
+  getPortfolioList() {
     try {
-      this.portfolioService.makeRequest()
+      this.portfolioService.getPortfolioList()
       .subscribe(
         portfolio => this.portfolio = portfolio,
         error => this.errorMessage = error
@@ -31,7 +33,6 @@ export class PortfolioListComponent implements OnInit {
     } catch (err) {
       console.log(err);
     }
-    //console.log(this.portfolio);
   }
 
 }

@@ -16,4 +16,5 @@ export class Portfolio {
   category: string;
   views: number;
   published: number;
+  photos: string[];
 }
