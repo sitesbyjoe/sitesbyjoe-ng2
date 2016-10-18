@@ -11,35 +11,36 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { routing, appRoutingProviders } from './portfolio.routing';
+import { portfolioRouting, portfolioRoutingProviders } from './portfolio.routing';
 import { Portfolio } from './portfolio';
 import { PortfolioService } from './portfolio.service';
 import { PortfolioListComponent } from './portfolio-list.component';
 import { PortfolioDetailComponent } from './portfolio-detail.component';
-export var PortfolioModule = (function () {
+var PortfolioModule = (function () {
     function PortfolioModule() {
     }
-    PortfolioModule = __decorate([
-        NgModule({
-            declarations: [
-                PortfolioListComponent,
-                PortfolioDetailComponent
-            ],
-            imports: [
-                BrowserModule,
-                FormsModule,
-                HttpModule,
-                routing
-            ],
-            providers: [
-                Portfolio,
-                appRoutingProviders,
-                PortfolioService
-            ],
-            bootstrap: [PortfolioListComponent]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], PortfolioModule);
     return PortfolioModule;
 }());
+PortfolioModule = __decorate([
+    NgModule({
+        declarations: [
+            PortfolioListComponent,
+            PortfolioDetailComponent
+        ],
+        imports: [
+            BrowserModule,
+            FormsModule,
+            HttpModule,
+            portfolioRouting
+        ],
+        providers: [
+            Portfolio,
+            portfolioRoutingProviders,
+            PortfolioService
+        ],
+        bootstrap: [PortfolioListComponent]
+    }),
+    __metadata("design:paramtypes", [])
+], PortfolioModule);
+export { PortfolioModule };
 //# sourceMappingURL=../../../../src/app/portfolio/portfolio.module.js.map

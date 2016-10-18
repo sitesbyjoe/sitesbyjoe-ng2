@@ -8,7 +8,7 @@ import { HttpModule } from '@angular/http';
 // Add the RxJS Observable operators we need in this app.
 // import '../rxjs-operators';
 
-import { routing, appRoutingProviders }  from './portfolio.routing';
+import { portfolioRouting, portfolioRoutingProviders }  from './portfolio.routing';
 
 import { Portfolio } from './portfolio';
 import { PortfolioService } from './portfolio.service';
@@ -24,11 +24,11 @@ import { PortfolioDetailComponent } from './portfolio-detail.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    portfolioRouting
   ],
   providers: [
     Portfolio,
-    appRoutingProviders,
+    portfolioRoutingProviders,
     PortfolioService
   ],
   bootstrap: [PortfolioListComponent]

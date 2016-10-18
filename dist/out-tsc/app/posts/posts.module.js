@@ -11,40 +11,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { routing, appRoutingProviders } from './app.routing';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { PortfolioModule } from './portfolio/portfolio.module';
-import { PostsModule } from './posts/posts.module';
-import { ContactComponent } from './contact/contact.component';
-var AppModule = (function () {
-    function AppModule() {
+import { postRouting, postRoutingProviders } from './posts.routing';
+import { PostListComponent } from './post-list.component';
+var PostsModule = (function () {
+    function PostsModule() {
     }
-    return AppModule;
+    return PostsModule;
 }());
-AppModule = __decorate([
+PostsModule = __decorate([
     NgModule({
         declarations: [
-            AppComponent,
-            HomeComponent,
-            AboutComponent,
-            ContactComponent
+            PostListComponent,
         ],
         imports: [
             BrowserModule,
             FormsModule,
             HttpModule,
-            routing,
-            PortfolioModule,
-            PostsModule
+            postRouting
         ],
         providers: [
-            appRoutingProviders
+            postRoutingProviders,
         ],
-        bootstrap: [AppComponent]
+        bootstrap: [PostListComponent]
     }),
     __metadata("design:paramtypes", [])
-], AppModule);
-export { AppModule };
-//# sourceMappingURL=../../../src/app/app.module.js.map
+], PostsModule);
+export { PostsModule };
+//# sourceMappingURL=../../../../src/app/posts/posts.module.js.map

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PortfolioModule } from './portfolio/portfolio.module';
+import { PostsModule } from './posts/posts.module';
 import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ContactComponent } from './contact/contact.component';
     FormsModule,
     HttpModule,
     routing,
-    PortfolioModule
+    PortfolioModule,
+    PostsModule
   ],
   providers: [
     appRoutingProviders
