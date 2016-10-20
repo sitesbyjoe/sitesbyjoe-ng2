@@ -59,3 +59,30 @@ nav .main-nav {
   list-style: none;
   overflow: hidden;
 }
+
+/* subpage typography */
+.section-heading {
+  background: #272931;
+  margin: -1em -1em 1.5em -1em;
+  padding: 1.5em 1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.section-heading h1 {
+  margin: 0;
+  color: #ffffff;
+  line-height: 1.2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.section-heading h1 .red {
+  color: #AF6262;
+}
+
+
+/* posts */
+.article-date {
+  color: rgba(0, 0, 0, 0.4);
+  font-style: italic;
+  font-size: 80%;
+}

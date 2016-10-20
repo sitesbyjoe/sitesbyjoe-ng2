@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { Portfolio } from './portfolio';
-// import { PortfolioService } from './portfolio.service';
+import { PostService } from './posts.service';
 
 @Component({
   selector: 'app-post-list',
@@ -13,11 +13,12 @@ import { Component, OnInit } from '@angular/core';
 export class PostListComponent implements OnInit {
 
   //portfolio: Portfolio[];
-  //errorMessage: any;
+  errorMessage: any;
   heading:string = 'Post List Component';
+  posts: string[];
 
   constructor(
-    //private portfolioService: PortfolioService
+    private postService: PostService
   ) {}
 
   ngOnInit() {
@@ -26,15 +27,15 @@ export class PostListComponent implements OnInit {
 
   getPostList() {
     console.log('get post list');
-    /*try {
-      this.portfolioService.getPortfolioList()
+    try {
+      this.postService.getPostList()
       .subscribe(
-        portfolio => this.portfolio = portfolio,
+        posts => this.posts = posts,
         error => this.errorMessage = error
       );
     } catch (err) {
       console.log(err);
-    }*/
+    }
   }
 
 }

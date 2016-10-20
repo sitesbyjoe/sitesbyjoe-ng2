@@ -12,13 +12,14 @@ import { postRouting, postRoutingProviders }  from './posts.routing';
 
 // import { Portfolio } from './portfolio';
 // import { PortfolioService } from './portfolio.service';
+import { PostService } from './posts.service';
 import { PostListComponent } from './post-list.component';
-// import { PortfolioDetailComponent } from './portfolio-detail.component';
+import { PostDetailComponent } from './post-detail.component';
 
 @NgModule({
   declarations: [
     PostListComponent,
-    // PortfolioDetailComponent
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,7 @@ import { PostListComponent } from './post-list.component';
   providers: [
     // Portfolio,
     postRoutingProviders,
-    // PortfolioService
+    PostService
   ],
   bootstrap: [PostListComponent]
 })

@@ -1,0 +1,10 @@
+<article *ngFor="let post of post">
+
+  <div class="section-heading">
+    <h1>{{post.headline}}</h1>
+  </div>
+  <p class="article-date">Posted on {{post.datestamp | date}}</p>
+
+  <div [innerHtml]="post.story"></div>
+
+</article>

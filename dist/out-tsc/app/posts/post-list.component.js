@@ -8,15 +8,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component } from '@angular/core';
+import { PostService } from './posts.service';
 var PostListComponent = (function () {
-    function PostListComponent() {
+    function PostListComponent(postService) {
+        this.postService = postService;
         this.heading = 'Post List Component';
     }
     PostListComponent.prototype.ngOnInit = function () {
         this.getPostList();
     };
     PostListComponent.prototype.getPostList = function () {
+        var _this = this;
         console.log('get post list');
+        try {
+            this.postService.getPostList()
+                .subscribe(function (posts) { return _this.posts = posts; }, function (error) { return _this.errorMessage = error; });
+        }
+        catch (err) {
+            console.log(err);
+        }
     };
     return PostListComponent;
 }());
@@ -26,7 +36,7 @@ PostListComponent = __decorate([
         templateUrl: './post-list.component.html',
         providers: []
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [PostService])
 ], PostListComponent);
 export { PostListComponent };
 //# sourceMappingURL=../../../../src/app/posts/post-list.component.js.map

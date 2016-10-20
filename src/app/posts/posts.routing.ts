@@ -2,15 +2,13 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PostListComponent } from './post-list.component';
-// import { PortfolioDetailComponent } from './portfolio-detail.component';
+import { PostDetailComponent } from './post-detail.component';
 
 const postRoutes: Routes = [
   { path: 'posts', component: PostListComponent },
-  // { path: 'portfolio/detail/:id', component: PortfolioDetailComponent }
+  { path: 'posts/detail/:year/:month/:day/:slug', component: PostDetailComponent }
 ];
 
-export const postRoutingProviders: any[] = [
-
-];
+export const postRoutingProviders: any[] = [];
 
 export const postRouting: ModuleWithProviders = RouterModule.forRoot(postRoutes);

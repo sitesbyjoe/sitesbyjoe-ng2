@@ -12,7 +12,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { postRouting, postRoutingProviders } from './posts.routing';
+import { PostService } from './posts.service';
 import { PostListComponent } from './post-list.component';
+import { PostDetailComponent } from './post-detail.component';
 var PostsModule = (function () {
     function PostsModule() {
     }
@@ -22,6 +24,7 @@ PostsModule = __decorate([
     NgModule({
         declarations: [
             PostListComponent,
+            PostDetailComponent
         ],
         imports: [
             BrowserModule,
@@ -31,6 +34,7 @@ PostsModule = __decorate([
         ],
         providers: [
             postRoutingProviders,
+            PostService
         ],
         bootstrap: [PostListComponent]
     }),
